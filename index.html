@@ -1,0 +1,114 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <style>
+    .tree span:hover {
+      font-weight: bold;
+    }
+
+    .tree span {
+      cursor: pointer;
+    }
+  </style>
+  <meta charset="utf-8">
+</head>
+
+<body>
+
+  <ul class="tree" id="tree">
+    <li>План
+      <ul>
+        <li>Озон
+          <ul>
+            <li>Товары
+                <ul>
+                    <li> Создание товаров
+                        <ul>
+                            <li>Масло
+                                <ul>
+                                    <li> Shell
+                                    </li>
+                                    <li> Rolf
+                                    </li>
+                                    <li> Petronans
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>Аксесуары
+                                <ul>
+                                    <li>Чехлы
+                                        <ul>
+                                            <li>Bosch</li>
+                                        </ul>
+                                    </li>
+                                    <li>Коврики</li>
+                                    <li>Щётки</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>Заполнение товаров
+                        
+                    </li>
+                    <li>Продвижение товаров
+
+                    </li>               
+                    <li> Добавление отзывов
+                        
+                    </li>
+                </ul>
+            </li>
+            <li>Акции и общее Продвижение
+                <ul>
+                    <li>Следить за приемлемыми акциями и заранее корректировать цены(Тиго)</li>
+                    <li>Обновить стратегии ценообразование в фиде(=7 дней(Тиго))</li>
+                </ul>
+            </li>
+            <li>Выдача заказов
+                <ul>
+                    <li>Отвечать на вопросы и заявки на скидки Клиентов(ПАПААА!!)</li>
+                    <li>Минимализировать число отмен,возвратов и тд(Всё что сязанно с невнимательной работой папы)</li>
+                </ul>
+            </li>
+          </ul>
+        </li>
+        <li>Сайт
+            <ul>
+              
+            </ul>
+          </li>
+        <li>Яндекс
+          <ul>
+            
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+  <script>
+    // поместить все текстовые узлы в элемент <span>
+    // он занимает только то место, которое необходимо для текста
+    for (let li of tree.querySelectorAll('li')) {
+      let span = document.createElement('span');
+      li.prepend(span);
+      span.append(span.nextSibling); // поместить текстовый узел внутрь элемента <span>
+    }
+
+    //  ловим клики на всём дереве
+    tree.onclick = function(event) {
+
+      if (event.target.tagName != 'SPAN') {
+        return;
+      }
+
+      let childrenContainer = event.target.parentNode.querySelector('ul');
+      if (!childrenContainer) return; // нет детей
+
+      childrenContainer.hidden = !childrenContainer.hidden;
+    }
+  </script>
+
+</body>
+</html>
